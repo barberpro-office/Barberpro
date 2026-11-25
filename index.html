@@ -91,16 +91,72 @@ dengan gaya terbaiknya.
 </section>
 
 <section class="booking" id="booking">
-<h2>Booking Jadwal Anda</h2>
-<p>Jangan antre! Pesan jadwal potong rambut Anda sekarang.</p>
-<a class="btn" href="https://wa.me/6282211122979?text=Halo%20Barberpro,%20saya%20ingin%20booking%20potong%20rambut" target="_blank">
-Booking via WhatsApp
-</a>
-</section>
+  <h2>Booking Jadwal Anda</h2>
+  <p>Pilih hari dan jam potong rambut Anda.</p>
 
+  <input type="text" id="nama" placeholder="Nama Anda">
+
+  <select id="layanan">
+    <option>Haircut - Rp50.000</option>
+    <option>Haircut + Wash - Rp50.000</option>
+    <option>Hair Styling - Rp25.000</option>
+    <option>Beard Trim - Rp20.000</option>
+  </select>
+
+  <input type="date" id="tanggal">
+
+  <select id="jam">
+    <option value="">Pilih Jam</option>
+    <option>09:00</option>
+    <option>10:00</option>
+    <option>11:00</option>
+    <option>12:00</option>
+    <option>13:00</option>
+    <option>14:00</option>
+    <option>15:00</option>
+    <option>16:00</option>
+    <option>17:00</option>
+    <option>18:00</option>
+    <option>19:00</option>
+    <option>20:00</option>
+  </select>
+
+  <button class="btn" onclick="bookingWA()">
+    Booking via WhatsApp
+  </button>
+</section>
 <footer>
 <p>&copy; 2026 <span>BW THE BARBER</span> | All Rights Reserved</p>
 </footer>
 
+<script>
+function bookingWA() {
+  const nama = document.getElementById("nama").value;
+  const layanan = document.getElementById("layanan").value;
+  const tanggal = document.getElementById("tanggal").value;
+  const jam = document.getElementById("jam").value;
+
+  if (!nama || !layanan || !tanggal || !jam) {
+    alert("Mohon lengkapi nama, layanan, tanggal, dan jam booking!");
+    return;
+  }
+
+  const nomorWA = "6282211122979";
+
+  const pesan = `Halo BW THE BARBER, saya ingin booking:
+
+Nama: ${nama}
+Layanan: ${layanan}
+Tanggal: ${tanggal}
+Jam: ${jam}
+
+Mohon konfirmasi booking saya.`;
+
+const url = "https://wa.me/" + nomorWA + "?text=" + encodeURIComponent(pesan);
+window.open(url, "_blank");
+}
+</script>
+
 </body>
+
 </html>
