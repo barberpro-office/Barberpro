@@ -16,11 +16,53 @@ nav a{color:white;text-decoration:none;margin-left:18px}
 .btn{display:inline-block;background:#d4a45d;color:#111;padding:15px 28px;border-radius:8px;text-decoration:none;font-weight:bold}
 section{padding:65px 20px;text-align:center}
 h2{color:#d4a45d;font-size:30px;margin-bottom:35px}
-.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:1000px;margin:auto}
-.card{background:#222;padding:30px 20px;border-radius:15px}
-.card h3{margin-bottom:15px;font-size:22px}
-.card p{color:#ccc;line-height:1.6}
-.price{color:#d4a45d;font-size:22px;font-weight:bold;margin-top:18px}
+.services {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.card {
+  background: linear-gradient(145deg, #222, #151515);
+  padding: 28px 20px;
+  border-radius: 18px;
+  border: 1px solid rgba(212, 164, 93, 0.25);
+  text-align: center;
+  transition: 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: #d4a45d;
+  box-shadow: 0 10px 25px rgba(212,164,93,0.15);
+}
+
+.card .icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.card h3 {
+  color: #d4a45d;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.card p {
+  color: #ccc;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.price {
+  color: #d4a45d;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 18px;
+}
 .about{background:#181818}
 .about p{max-width:700px;margin:auto;line-height:1.8;color:#ddd}
 .booking p{color:#ccc;margin-bottom:25px}
