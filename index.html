@@ -115,7 +115,7 @@ percaya diri dengan gaya terbaiknya.
 <option value="">Pilih Jam</option>
 </select>
 
-<button type="button" id="bookingButton">
+<button type="button" id="bookingButton" onclick="bookingWA()">
 Booking via WhatsApp
 </button>
 
@@ -325,15 +325,15 @@ if (service.includes("|")) {
       "Mohon konfirmasi booking saya. Terima kasih.";
 
     const wa =
-      "https://wa.me/6282211122979?text=" +
-      encodeURIComponent(message);
+    "https://api.whatsapp.com/send?phone=6282211122979&text=" +
+    encodeURIComponent(message);
 
-    window.location.href = wa;
-  }
+window.open(wa, "_blank");
 
-  buttonEl.onclick = function () {
-  submitBooking();
-};
+  buttonEl.addEventListener("click", function (event) {
+    event.preventDefault();
+    submitBooking();
+});
 
   fillTimes();
 
