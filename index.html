@@ -179,7 +179,8 @@ Booking akan diteruskan ke WhatsApp untuk konfirmasi.
     };
   }
 
-  function fillTimes() {
+  
+function fillTimes() {
     const current = partsWIB();
     const chosen = dateEl.value;
 
@@ -193,26 +194,20 @@ Booking akan diteruskan ke WhatsApp untuk konfirmasi.
     if (!chosen) return;
 
     for (let h = 10; h <= 22; h++) {
+        if (
+            chosen === current.date &&
+            (h < current.hour ||
+            (h === current.hour && current.minute > 0))
+        ) {
+            continue;
+        }
 
-      if (
-        chosen === current.date &&
-        (h < current.hour ||
-        (h === current.hour && current.minute > 0))
-      ) {
-        continue;
-      }
-
-      const opt = document.createElement("option");
-      opt.value = String(h).padStart(2, "0") + ":00 WIB";
-      opt.textContent = opt.value;
-
-      timeEl.appendChild(opt);
+        const opt = document.createElement("option");
+        opt.value = String(h).padStart(2, "0") + ":00";
+        opt.textContent = opt.value;
+        timeEl.appendChild(opt);
     }
-
-    if (timeEl.options.length === 1) {
-      placeholder.textContent = "Jam operasional hari ini selesai";
-    }
-  }
+}
 
   dateEl.min = partsWIB().date;
 
