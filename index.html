@@ -222,9 +222,14 @@ Booking akan diteruskan ke WhatsApp untuk konfirmasi.
   function submitBooking() {
 
     const customer = nameEl.value.trim();
-    const service = serviceEl.value;
-    const day = dateEl.value;
-    const time = timeEl.value;
+
+const selectedService = serviceEl.options[serviceEl.selectedIndex];
+const service = selectedService
+  ? (selectedService.value || selectedService.text.trim())
+  : "";
+
+const day = dateEl.value;
+const time = timeEl.value;
 
     if (!customer) {
       alert("Silakan isi nama Anda.");
@@ -272,10 +277,29 @@ Booking akan diteruskan ke WhatsApp untuk konfirmasi.
       }
     }
 
-    const s = service.split("|");
-    const serviceName = s[0];
-    const price = Number(s[1]);
+    let serviceName = "";
+let price = 0;
 
+if (service.includes("|")) {
+  const s = service.split("|");
+  serviceName = s[0];
+  price = Number(s[1]);
+} else {
+  serviceName = service;
+
+  const prices = {
+    "Haircut + Wash - Rp50.000": 50000,
+    "Hair Coloring - Mulai Rp400.000": 400000,
+    "Treatment Keratin - Mulai Rp400.000": 400000,
+    "Creambath - Rp100.000": 100000,
+    "Perming - Mulai Rp300.000": 300000,
+    "Down Perm - Rp300.000": 300000,
+    "Korean Perm - Rp350.000": 350000,
+    "Smoothing - Mulai Rp400.000": 400000
+  };
+
+  price = prices[service] || 0;
+}
     if (!serviceName || !Number.isFinite(price) || price <= 0) {
       alert("Layanan tidak valid. Silakan pilih ulang.");
       serviceEl.focus();
