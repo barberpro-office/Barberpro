@@ -1,270 +1,843 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BW THE BARBER | Premium Barbershop</title>
+<title>BW THE BARBER | Premium Grooming</title>
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#101010;color:#fff}
-header{padding:22px 7%;display:flex;justify-content:space-between;align-items:center;background:#111}
-.logo{font-size:25px;font-weight:bold;color:#d4a45d}
-nav a{color:white;text-decoration:none;margin-left:18px}
-.hero{text-align:center;padding:100px 20px 90px;background:linear-gradient(#000b,#000b),url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1200&q=80') center/cover}
-.hero h1{font-size:42px;margin-bottom:20px}
-.hero p{color:#ddd;font-size:18px;margin-bottom:30px}
-.btn{display:inline-block;background:#d4a45d;color:#111;padding:15px 28px;border-radius:8px;text-decoration:none;font-weight:bold}
-section{padding:65px 20px;text-align:center}
-h2{color:#d4a45d;font-size:30px;margin-bottom:35px}
-.services {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  max-width: 1000px;
+:root {
+  --bg: #0b0b0b;
+  --surface: #151515;
+  --gold: #c8a46a;
+  --gold-light: #e1c18a;
+  --text: #f5f2ec;
+  --muted: #a5a5a5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* NAVBAR */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(10,10,10,0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #262626;
+}
+
+.navbar {
+  max-width: 1200px;
   margin: auto;
+  padding: 18px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.card {
-  background: linear-gradient(145deg, #222, #151515);
-  padding: 28px 20px;
-  border-radius: 18px;
-  border: 1px solid rgba(212, 164, 93, 0.25);
-  text-align: center;
-  transition: 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+.logo {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: var(--gold);
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  border-color: #d4a45d;
-  box-shadow: 0 10px 25px rgba(212,164,93,0.15);
-}
-
-.card .icon {
-  font-size: 32px;
-  margin-bottom: 12px;
-}
-
-.card h3 {
-  color: #d4a45d;
-  font-size: 20px;
-  margin-bottom: 12px;
-}
-
-.card p {
-  color: #ccc;
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-.price {
-  color: #d4a45d;
-  font-size: 18px;
-  font-weight: bold;
-  margin-top: 18px;
-}
-.about{background:#181818}
-.about p{max-width:700px;margin:auto;line-height:1.8;color:#ddd}
-.booking p{color:#ccc;margin-bottom:25px}
-footer{background:#080808;padding:25px;text-align:center;color:#aaa}
-footer span{color:#d4a45d}
-@media(max-width:600px){
-.hero h1{font-size:34px}
-header{padding:20px}
-nav a{margin-left:10px;font-size:13px}
-}
-/* RAPAPI FORM BOOKING */
-.booking {
-  padding: 70px 20px;
+.logo small {
+  display: block;
+  color: #aaa;
+  font-size: 9px;
+  letter-spacing: 5px;
   text-align: center;
 }
 
-.booking h2 {
-  font-size: 38px;
+nav {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+nav a {
+  font-size: 13px;
+  color: #ddd;
+  transition: .3s;
+}
+
+nav a:hover {
+  color: var(--gold);
+}
+
+.nav-book {
+  border: 1px solid var(--gold);
+  padding: 9px 16px;
+  color: var(--gold);
+}
+
+/* HERO */
+
+.hero {
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background:
+    linear-gradient(90deg,
+      rgba(0,0,0,.95) 0%,
+      rgba(0,0,0,.72) 50%,
+      rgba(0,0,0,.25) 100%),
+    url("https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1600&q=85")
+    center/cover;
+}
+
+.hero-content {
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+  padding: 70px 24px;
+}
+
+.eyebrow {
+  color: var(--gold);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-size: 12px;
   margin-bottom: 20px;
 }
 
-.booking p {
-  margin-bottom: 35px;
+.hero h1 {
+  font-size: clamp(42px, 8vw, 90px);
+  line-height: 1.05;
+  font-weight: 900;
+  text-transform: uppercase;
+  max-width: 800px;
 }
 
-.booking input,
-.booking select {
-  width: 100%;
-  max-width: 400px;
-  box-sizing: border-box;
-  padding: 14px;
-  margin: 10px auto;
-  display: block;
-  border-radius: 12px;
-  border: 1px solid #ccc;
+.hero h1 span {
+  color: var(--gold);
+}
+
+.hero p {
+  color: #ccc;
+  max-width: 500px;
+  margin-top: 25px;
   font-size: 16px;
 }
 
-.booking .btn {
-  width: 100%;
-  max-width: 400px;
-  padding: 16px;
-  margin: 15px auto;
-  display: block;
-  border-radius: 12px;
-  font-size: 17px;
-  font-weight: bold;
+.hero-buttons {
+  margin-top: 35px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
-/* TAMPILAN HP */
-@media (max-width: 600px) {
-  .booking h2 {
-    font-size: 30px;
+.btn {
+  display: inline-block;
+  padding: 15px 24px;
+  background: var(--gold);
+  color: #111;
+  font-weight: bold;
+  border: 1px solid var(--gold);
+  transition: .3s;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--gold-light);
+}
+
+.btn-outline {
+  background: transparent;
+  color: white;
+  border: 1px solid #777;
+}
+
+.btn-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: transparent;
+}
+
+/* STRIP */
+
+.strip {
+  border-top: 1px solid #292929;
+  border-bottom: 1px solid #292929;
+  background: #111;
+  padding: 20px;
+  text-align: center;
+  color: var(--gold);
+  letter-spacing: 3px;
+  font-size: 12px;
+}
+
+/* SECTIONS */
+
+.section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 90px 24px;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-heading .eyebrow {
+  margin-bottom: 10px;
+}
+
+.section-heading h2 {
+  font-size: clamp(30px, 5vw, 48px);
+  text-transform: uppercase;
+}
+
+.section-heading p {
+  color: var(--muted);
+  margin-top: 15px;
+}
+
+/* SERVICES */
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.service-card {
+  background: var(--surface);
+  border: 1px solid #292929;
+  padding: 30px 25px;
+  transition: .3s;
+}
+
+.service-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-4px);
+}
+
+.service-number {
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.service-card h3 {
+  font-size: 20px;
+  margin: 12px 0;
+}
+
+.service-card p {
+  color: var(--muted);
+  font-size: 14px;
+  min-height: 60px;
+}
+
+.price {
+  margin-top: 20px;
+  color: var(--gold);
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* ABOUT */
+
+.about {
+  background: #121212;
+}
+
+.about-grid {
+  max-width: 1200px;
+  margin: auto;
+  padding: 80px 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about-image {
+  min-height: 450px;
+  background:
+    url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1000&q=85")
+    center/cover;
+}
+
+.about-text .eyebrow {
+  margin-bottom: 10px;
+}
+
+.about-text h2 {
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.15;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.about-text h2 span {
+  color: var(--gold);
+}
+
+.about-text p {
+  color: #aaa;
+  margin-bottom: 18px;
+}
+
+.features {
+  margin-top: 30px;
+}
+
+.features div {
+  border-left: 2px solid var(--gold);
+  padding-left: 15px;
+  margin-bottom: 15px;
+}
+
+.features strong {
+  display: block;
+}
+
+.features small {
+  color: var(--muted);
+}
+
+/* GALLERY */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.gallery-item {
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.gallery-item:nth-child(1) {
+  background-image: url("https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=900&q=85");
+}
+
+.gallery-item:nth-child(2) {
+  background-image: url("https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=900&q=85");
+}
+
+.gallery-item:nth-child(3) {
+  background-image: url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=900&q=85");
+}
+
+/* BOOKING */
+
+.booking-section {
+  background:
+    linear-gradient(rgba(0,0,0,.88), rgba(0,0,0,.92)),
+    url("https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1400&q=85")
+    center/cover;
+}
+
+.booking-container {
+  max-width: 700px;
+  margin: auto;
+}
+
+.booking-box {
+  background: #151515;
+  border: 1px solid #383838;
+  padding: 35px;
+}
+
+.booking-box p {
+  color: #aaa;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+input, select {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 16px;
+  background: #eaeaea;
+  color: #111;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+input:focus, select:focus {
+  outline: 2px solid var(--gold);
+}
+
+.booking-box button {
+  width: 100%;
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+/* FOOTER */
+
+footer {
+  background: #070707;
+  padding: 50px 24px;
+  text-align: center;
+  border-top: 1px solid #222;
+}
+
+.footer-logo {
+  color: var(--gold);
+  font-weight: bold;
+  font-size: 25px;
+  letter-spacing: 4px;
+}
+
+footer p {
+  color: #777;
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+.footer-links {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #aaa;
+  font-size: 13px;
+}
+
+.footer-links a:hover {
+  color: var(--gold);
+}
+
+/* MOBILE */
+
+@media(max-width: 768px) {
+
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
   }
 
-  .booking p {
-    font-size: 17px;
+  nav {
+    gap: 18px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
-  .booking input,
-  .booking select,
-  .booking .btn {
-    width: 100%;
-    max-width: 100%;
+  .hero {
+    min-height: 550px;
+    background-position: center;
   }
+
+  .hero-content {
+    padding: 60px 24px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .about-image {
+    min-height: 320px;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-item {
+    height: 300px;
+  }
+
+  .section {
+    padding: 65px 20px;
+  }
+
+  .booking-box {
+    padding: 22px;
+  }
+
+  .strip {
+    letter-spacing: 1px;
+    font-size: 10px;
+  }
+}
+
 </style>
 </head>
+
 <body>
 
+<!-- NAVBAR -->
+
 <header>
-<div class="logo">BW THE BARBER</div>
-<nav>
-<a href="#layanan">Layanan</a>
-<a href="#tentang">Tentang</a>
-</nav>
+  <div class="navbar">
+
+    <a href="#" class="logo">
+      BW THE BARBER
+      <small>PREMIUM GROOMING</small>
+    </a>
+
+    <nav>
+      <a href="#layanan">Layanan</a>
+      <a href="#tentang">Tentang</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#booking" class="nav-book">BOOKING</a>
+    </nav>
+
+  </div>
 </header>
 
-<div class="hero">
-<h1>Gaya Terbaik<br>Dimulai Dari Sini</h1>
-<p>Barbershop profesional untuk penampilan terbaik Anda.</p>
-<a class="btn" href="#booking">Booking Sekarang</a>
-</div>
+<!-- HERO -->
 
-<section id="layanan">
-<h2>Layanan Kami</h2>
-<div class="services">
+<section class="hero">
 
-<div class="services">
+  <div class="hero-content">
 
-  <div class="card">
-    <h3>Haircut + Wash</h3>
-    <p>Potong rambut sekaligus keramas.</p>
-    <div class="price">Rp50.000</div>
+    <div class="eyebrow">
+      Premium Men's Grooming
+    </div>
+
+    <h1>
+      YOUR STYLE.<br>
+      <span>YOUR IDENTITY.</span>
+    </h1>
+
+    <p>
+      Lebih dari sekadar potong rambut.
+      Temukan gaya terbaikmu dengan barber profesional
+      dan pengalaman grooming premium.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#booking" class="btn">BOOK YOUR APPOINTMENT</a>
+      <a href="#layanan" class="btn btn-outline">EXPLORE SERVICES</a>
+    </div>
+
   </div>
 
-  <div class="card">
-    <h3>Hair Coloring</h3>
-    <p>Pewarnaan rambut dengan berbagai pilihan warna.</p>
-    <div class="price">Mulai Rp400.000</div>
-  </div>
-
-  <div class="card">
-    <h3>Treatment Keratin</h3>
-    <p>Treatment untuk rambut lebih halus, lembut dan mudah diatur.</p>
-    <div class="price">Mulai Rp400.000</div>
-  </div>
-
-  <div class="card">
-    <h3>Creambath</h3>
-    <p>Perawatan rambut dan kulit kepala.</p>
-    <div class="price">Rp100.000</div>
-  </div>
-
-  <div class="card">
-    <h3>Perming</h3>
-    <p>Perawatan untuk menciptakan tekstur dan keriting rambut.</p>
-    <div class="price">Mulai Rp300.000</div>
-  </div>
-
-  <div class="card">
-    <h3>Down Perm</h3>
-    <p>Menata rambut agar lebih rapi dan mudah diatur.</p>
-    <div class="price">Rp300.000</div>
-  </div>
-
-  <div class="card">
-    <h3>Korean Perm</h3>
-    <p>Gaya perm dengan tampilan Korean hairstyle.</p>
-    <div class="price">Rp350.000</div>
-  </div>
-
-  <div class="card">
-    <h3>Smoothing</h3>
-    <p>Perawatan untuk rambut lebih halus dan lurus.</p>
-    <div class="price">Mulai Rp400.000</div>
-  </div>
-
-</div>
 </section>
+
+<div class="strip">
+  PREMIUM CUT &nbsp; • &nbsp; MODERN STYLE &nbsp; • &nbsp; PROFESSIONAL BARBER
+</div>
+
+<!-- SERVICES -->
+
+<section class="section" id="layanan">
+
+  <div class="section-heading">
+    <div class="eyebrow">Our Services</div>
+    <h2>Grooming Menu</h2>
+    <p>Perawatan profesional untuk penampilan terbaik Anda.</p>
+  </div>
+
+  <div class="services">
+
+    <div class="service-card">
+      <div class="service-number">01 / CUT</div>
+      <h3>Haircut + Wash</h3>
+      <p>Potongan rambut modern dan klasik dengan keramas.</p>
+      <div class="price">Rp50.000</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-number">02 / COLOR</div>
+      <h3>Hair Coloring</h3>
+      <p>Warna rambut untuk karakter dan gaya yang lebih berani.</p>
+      <div class="price">Mulai Rp400.000</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-number">03 / CARE</div>
+      <h3>Treatment Keratin</h3>
+      <p>Perawatan rambut agar lembut, sehat dan mudah diatur.</p>
+      <div class="price">Mulai Rp400.000</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-number">04 / CARE</div>
+      <h3>Creambath</h3>
+      <p>Perawatan rambut dan kulit kepala dengan relaksasi.</p>
+      <div class="price">Rp100.000</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-number">05 / STYLE</div>
+      <h3>Perming</h3>
+      <p>Tekstur dan gelombang untuk gaya rambut dinamis.</p>
+      <div class="price">Mulai Rp300.000</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-number">06 / STYLE</div>
+      <h3>Down Perm</h3>
+      <p>Membantu rambut samping lebih rapi dan terkendali.</p>
+      <div class="price">Rp300.000</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-number">07 / STYLE</div>
+      <h3>Korean Perm</h3>
+      <p>Tekstur bergelombang dengan gaya khas Korea.</p>
+      <div class="price">Rp350.000</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-number">08 / STYLE</div>
+      <h3>Smoothing</h3>
+      <p>Rambut lebih halus, lurus, dan mudah ditata.</p>
+      <div class="price">Mulai Rp400.000</div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ABOUT -->
 
 <section class="about" id="tentang">
-<h2>Tentang BW THE BARBER</h2>
-<p>
-BW THE BARBER hadir untuk memberikan pengalaman potong rambut
-yang nyaman, profesional, dan berkualitas.
-Kami percaya setiap pria berhak tampil percaya diri
-dengan gaya terbaiknya.
-</p>
+
+  <div class="about-grid">
+
+    <div class="about-image"></div>
+
+    <div class="about-text">
+
+      <div class="eyebrow">About Us</div>
+
+      <h2>
+        MORE THAN<br>
+        <span>JUST A HAIRCUT.</span>
+      </h2>
+
+      <p>
+        BW THE BARBER hadir untuk memberikan pengalaman
+        grooming dengan kualitas, kenyamanan, dan perhatian
+        terhadap detail.
+      </p>
+
+      <p>
+        Kami percaya bahwa penampilan bukan hanya tentang
+        rambut, tetapi juga tentang karakter, kepercayaan diri,
+        dan identitas.
+      </p>
+
+      <div class="features">
+
+        <div>
+          <strong>Professional Barber</strong>
+          <small>Pelayanan dengan perhatian terhadap detail.</small>
+        </div>
+
+        <div>
+          <strong>Modern Style</strong>
+          <small>Gaya klasik dan modern sesuai karakter.</small>
+        </div>
+
+        <div>
+          <strong>Premium Experience</strong>
+          <small>Pengalaman grooming nyaman dan berkualitas.</small>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
 
-<section class="booking" id="booking">
-  <h2>Booking Jadwal Anda</h2>
-  <p>Pilih hari dan jam potong rambut Anda.</p>
+<!-- GALLERY -->
 
-  <input type="text" id="nama" placeholder="Nama Anda">
+<section class="section" id="gallery">
 
-  <select id="layanan">
-  <option value="">Pilih Layanan</option>
-  <option>Haircut + Wash - Rp50.000</option>
-  <option>Hair Coloring - Mulai Rp400.000</option>
-  <option>Treatment Keratin - Mulai Rp400.000</option>
-  <option>Creambath - Rp100.000</option>
-  <option>Perming - Mulai Rp300.000</option>
-  <option>Down Perm - Rp300.000</option>
-  <option>Korean Perm - Rp350.000</option>
-  <option>Smoothing - Mulai Rp400.000</option>
-</select>
+  <div class="section-heading">
+    <div class="eyebrow">Our Atmosphere</div>
+    <h2>The Barber Experience</h2>
+    <p>Style, detail, dan karakter.</p>
+  </div>
 
-  <input type="date" id="tanggal">
+  <div class="gallery">
 
-  <select id="jam">
-    <option value="">Pilih Jam</option>
-    <option>09:00</option>
-    <option>10:00</option>
-    <option>11:00</option>
-    <option>12:00</option>
-    <option>13:00</option>
-    <option>14:00</option>
-    <option>15:00</option>
-    <option>16:00</option>
-    <option>17:00</option>
-    <option>18:00</option>
-    <option>19:00</option>
-    <option>20:00</option>
-  </select>
+    <div class="gallery-item"></div>
+    <div class="gallery-item"></div>
+    <div class="gallery-item"></div>
 
-  <button class="btn" onclick="bookingWA()">
-    Booking via WhatsApp
-  </button>
+  </div>
+
 </section>
+
+<!-- BOOKING -->
+
+<section class="booking-section section" id="booking">
+
+  <div class="booking-container">
+
+    <div class="section-heading">
+      <div class="eyebrow">Appointment</div>
+      <h2>Book Your Style</h2>
+      <p>Jadwalkan kunjungan Anda sekarang.</p>
+    </div>
+
+    <div class="booking-box">
+
+      <p>
+        Isi detail booking Anda.
+        Permintaan akan dikirim langsung ke WhatsApp.
+      </p>
+
+      <form id="bookingForm">
+
+        <input
+          type="text"
+          id="nama"
+          placeholder="Nama lengkap"
+          required
+        >
+
+        <select id="layanan" required>
+
+          <option value="">Pilih layanan</option>
+
+          <option value="Haircut + Wash - Rp50.000">
+            Haircut + Wash - Rp50.000
+          </option>
+
+          <option value="Hair Coloring - Mulai Rp400.000">
+            Hair Coloring - Mulai Rp400.000
+          </option>
+
+          <option value="Treatment Keratin - Mulai Rp400.000">
+            Treatment Keratin - Mulai Rp400.000
+          </option>
+
+          <option value="Creambath - Rp100.000">
+            Creambath - Rp100.000
+          </option>
+
+          <option value="Perming - Mulai Rp300.000">
+            Perming - Mulai Rp300.000
+          </option>
+
+          <option value="Down Perm - Rp300.000">
+            Down Perm - Rp300.000
+          </option>
+
+          <option value="Korean Perm - Rp350.000">
+            Korean Perm - Rp350.000
+          </option>
+
+          <option value="Smoothing - Mulai Rp400.000">
+            Smoothing - Mulai Rp400.000
+          </option>
+
+        </select>
+
+        <input
+          type="date"
+          id="tanggal"
+          required
+        >
+
+        <select id="jam" required>
+          <option value="">Pilih jam</option>
+          <option value="09:00">09:00</option>
+          <option value="10:00">10:00</option>
+          <option value="11:00">11:00</option>
+          <option value="12:00">12:00</option>
+          <option value="13:00">13:00</option>
+          <option value="14:00">14:00</option>
+          <option value="15:00">15:00</option>
+          <option value="16:00">16:00</option>
+          <option value="17:00">17:00</option>
+          <option value="18:00">18:00</option>
+          <option value="19:00">19:00</option>
+          <option value="20:00">20:00</option>
+        </select>
+
+        <button
+          type="button"
+          class="btn"
+          onclick="bookingWA()"
+        >
+          BOOKING VIA WHATSAPP
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+
 <footer>
-<p>&copy; 2026 <span>BW THE BARBER</span> | All Rights Reserved</p>
+
+  <div class="footer-logo">BW THE BARBER</div>
+
+  <p>Premium Grooming & Modern Men's Style</p>
+
+  <div class="footer-links">
+    <a href="#layanan">Layanan</a>
+    <a href="#tentang">Tentang</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#booking">Booking</a>
+  </div>
+
+  <p style="margin-top:30px">
+    &copy; 2026 BW THE BARBER. All Rights Reserved.
+  </p>
+
 </footer>
+
+<!-- WHATSAPP BOOKING -->
 
 <script>
 function bookingWA() {
+
   const nama = document.getElementById("nama").value.trim();
   const layanan = document.getElementById("layanan").value;
   const tanggal = document.getElementById("tanggal").value;
   const jam = document.getElementById("jam").value;
 
-  if (nama === "" || layanan === "" || tanggal === "" || jam === "") {
+  if (!nama || !layanan || !tanggal || !jam) {
     alert("Mohon lengkapi nama, layanan, tanggal, dan jam booking!");
     return;
   }
@@ -280,13 +853,12 @@ Jam: ${jam}
 
 Mohon konfirmasi booking saya.`;
 
-  const url = "https://wa.me/" + nomorWA + "?text=" + encodeURIComponent(pesan);
+  const url = "https://wa.me/" + nomorWA +
+    "?text=" + encodeURIComponent(pesan);
 
-  window.open(url, "_blank");
+  window.location.href = url;
 }
-
 </script>
 
 </body>
-
 </html>
