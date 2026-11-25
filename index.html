@@ -1,219 +1,107 @@
+
 <!DOCTYPE html>
-
 <html lang="id">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Barberpro | Barbershop</title>
-
+<title>Barberpro | Premium Barbershop</title>
 <style>
-
-*{box-sizing:border-box}
-
-body{
-
-  margin:0;
-
-  font-family:Arial,sans-serif;
-
-  background:#111;
-
-  color:#fff;
-
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#101010;color:#fff}
+header{padding:22px 7%;display:flex;justify-content:space-between;align-items:center;background:#111}
+.logo{font-size:25px;font-weight:bold;color:#d4a45d}
+nav a{color:white;text-decoration:none;margin-left:18px}
+.hero{text-align:center;padding:100px 20px 90px;background:linear-gradient(#000b,#000b),url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1200&q=80') center/cover}
+.hero h1{font-size:42px;margin-bottom:20px}
+.hero p{color:#ddd;font-size:18px;margin-bottom:30px}
+.btn{display:inline-block;background:#d4a45d;color:#111;padding:15px 28px;border-radius:8px;text-decoration:none;font-weight:bold}
+section{padding:65px 20px;text-align:center}
+h2{color:#d4a45d;font-size:30px;margin-bottom:35px}
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:1000px;margin:auto}
+.card{background:#222;padding:30px 20px;border-radius:15px}
+.card h3{margin-bottom:15px;font-size:22px}
+.card p{color:#ccc;line-height:1.6}
+.price{color:#d4a45d;font-size:22px;font-weight:bold;margin-top:18px}
+.about{background:#181818}
+.about p{max-width:700px;margin:auto;line-height:1.8;color:#ddd}
+.booking p{color:#ccc;margin-bottom:25px}
+footer{background:#080808;padding:25px;text-align:center;color:#aaa}
+footer span{color:#d4a45d}
+@media(max-width:600px){
+.hero h1{font-size:34px}
+header{padding:20px}
+nav a{margin-left:10px;font-size:13px}
 }
-
-header{
-
-  padding:20px;
-
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-  background:#111;
-
-}
-
-.logo{font-size:24px;font-weight:bold;color:#d4a762}
-
-.hero{
-
-  text-align:center;
-
-  padding:80px 20px;
-
-  background:linear-gradient(#0009,#0009),
-
-  linear-gradient(135deg,#333,#111);
-
-}
-
-.hero h1{font-size:42px;margin:0 0 15px}
-
-.hero p{color:#ccc}
-
-.btn{
-
-  display:inline-block;
-
-  background:#d4a762;
-
-  color:#111;
-
-  padding:14px 24px;
-
-  text-decoration:none;
-
-  border-radius:8px;
-
-  font-weight:bold;
-
-  margin-top:15px;
-
-}
-
-section{padding:40px 20px;text-align:center}
-
-h2{color:#d4a762}
-
-.cards{
-
-  display:flex;
-
-  flex-wrap:wrap;
-
-  justify-content:center;
-
-  gap:20px;
-
-}
-
-.card{
-
-  background:#222;
-
-  padding:22px;
-
-  border-radius:12px;
-
-  width:280px;
-
-}
-
-.price{color:#d4a762;font-weight:bold}
-
-footer{
-
-  padding:30px;
-
-  text-align:center;
-
-  background:#222;
-
-  color:#aaa;
-
-}
-
 </style>
-
 </head>
-
 <body>
 
 <header>
-
-  <div class="logo">BARBERPRO</div>
-
+<div class="logo">BARBERPRO</div>
+<nav>
+<a href="#layanan">Layanan</a>
+<a href="#tentang">Tentang</a>
+</nav>
 </header>
 
 <div class="hero">
-
-  <h1>Gaya Terbaik<br>Dimulai Dari Sini</h1>
-
-  <p>Barbershop profesional untuk penampilan terbaik Anda.</p>
-
-  <a class="btn" href="#booking">Booking Sekarang</a>
-
+<h1>Gaya Terbaik<br>Dimulai Dari Sini</h1>
+<p>Barbershop profesional untuk penampilan terbaik Anda.</p>
+<a class="btn" href="#booking">Booking Sekarang</a>
 </div>
 
-<section>
+<section id="layanan">
+<h2>Layanan Kami</h2>
+<div class="services">
 
-  <h2>Layanan Kami</h2>
+<div class="card">
+<h3>Haircut</h3>
+<p>Potongan rambut modern dan klasik sesuai gaya Anda.</p>
+<div class="price">Rp35.000</div>
+</div>
 
-  <div class="cards">
+<div class="card">
+<h3>Haircut + Wash</h3>
+<p>Potong rambut sekaligus keramas agar lebih segar.</p>
+<div class="price">Rp45.000</div>
+</div>
 
-    <div class="card">
+<div class="card">
+<h3>Hair Styling</h3>
+<p>Styling profesional untuk penampilan lebih maksimal.</p>
+<div class="price">Rp25.000</div>
+</div>
 
-      <h3>Haircut</h3>
+<div class="card">
+<h3>Beard Trim</h3>
+<p>Rapikan dan bentuk jenggot dengan presisi.</p>
+<div class="price">Rp20.000</div>
+</div>
 
-      <p>Potongan rambut modern dan klasik.</p>
-
-      <p class="price">Rp35.000</p>
-
-    </div>
-
-    <div class="card">
-
-      <h3>Haircut + Wash</h3>
-
-      <p>Potong rambut dan cuci rambut.</p>
-
-      <p class="price">Rp50.000</p>
-
-    </div>
-
-    <div class="card">
-
-      <h3>Beard Trim</h3>
-
-      <p>Rapikan jenggot dengan profesional.</p>
-
-      <p class="price">Rp25.000</p>
-
-    </div>
-
-  </div>
-
+</div>
 </section>
 
-<section>
-
-  <h2>Kenapa Barberpro?</h2>
-
-  <p>Barber profesional, tempat nyaman, alat higienis, dan gaya terbaik untuk Anda.</p>
-
+<section class="about" id="tentang">
+<h2>Tentang Barberpro</h2>
+<p>
+Barberpro hadir untuk memberikan pengalaman potong rambut
+yang nyaman, profesional, dan berkualitas.
+Kami percaya setiap pria berhak tampil percaya diri
+dengan gaya terbaiknya.
+</p>
 </section>
 
-<section id="booking">
-
-  <h2>Booking Appointment</h2>
-
-  <p>Hubungi kami untuk menentukan jadwal potong rambut.</p>
-
-  <a class="btn" href="https://wa.me/6281234567890">
-
-    Booking via WhatsApp
-
-  </a>
-
+<section class="booking" id="booking">
+<h2>Booking Jadwal Anda</h2>
+<p>Jangan antre! Pesan jadwal potong rambut Anda sekarang.</p>
+<a class="btn" href="https://wa.me/6281234567890?text=Halo%20Barberpro,%20saya%20ingin%20booking%20potong%20rambut" target="_blank">
+Booking via WhatsApp
+</a>
 </section>
 
 <footer>
-
-  <p>BARBERPRO</p>
-
-  <p>Professional Barbershop</p>
-
-  <p>&copy; 2026 Barberpro</p>
-
+<p>&copy; 2026 <span>BARBERPRO</span> | All Rights Reserved</p>
 </footer>
 
 </body>
-
 </html>
