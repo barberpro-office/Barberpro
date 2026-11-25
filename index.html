@@ -211,183 +211,221 @@ const nameInput = document.getElementById("nama");
 const serviceSelect = document.getElementById("layanan");
 const dateInput = document.getElementById("tanggal");
 const timeSelect = document.getElementById("jam");
-const bookingButton = document.getElementById("bookingButton");
-
-// TANGGAL MINIMUM
+const bookingButton = document.getElementById("// TANGGAL MINIMUM
 dateInput.min = getWIBParts().date;
+<section id="booking">
+  <h2>Booking Jadwal Anda</h2>
+  <p class="section-desc">Pilih hari dan jam potong rambut Anda.</p>
 
-// MEMBUAT PILIHAN JAM
-function refreshTimeOptions() {
+  <div class="booking-container">
+    <input type="text" id="nama" placeholder="Nama Anda">
+
+    <select id="layanan">
+      <option value="Haircut + Wash|50000">Haircut + Wash - Rp50.000</option>
+      <option value="Hair Coloring|400000">Hair Coloring - Mulai Rp400.000</option>
+      <option value="Treatment Keratin|400000">Treatment Keratin - Mulai Rp400.000</option>
+      <option value="Creambath|100000">Creambath - Rp100.000</option>
+      <option value="Perming|300000">Perming - Mulai Rp300.000</option>
+      <option value="Down Perm|300000">Down Perm - Rp300.000</option>
+      <option value="Korean Perm|350000">Korean Perm - Rp350.000</option>
+      <option value="Smoothing|400000">Smoothing - Mulai Rp400.000</option>
+    </select>
+
+    <input type="date" id="tanggal">
+
+    <select id="jam">
+      <option value="">Pilih Jam</option>
+    </select>
+
+    <button type="button" id="bookingButton">
+      Booking via WhatsApp
+    </button>
+
+    <p class="booking-note">
+      Booking akan diteruskan ke WhatsApp untuk konfirmasi.
+    </p>
+  </div>
+</section>
+
+<section class="social">
+  <h2>Follow Kami</h2>
+  <p class="section-desc">Ikuti media sosial BW THE BARBER.</p>
+
+  <div class="social-links">
+    <a href="https://www.instagram.com/bw.hair.studio/"
+       target="_blank" rel="noopener noreferrer">Instagram</a>
+
+    <a href="https://www.tiktok.com/@barber.academy.pky"
+       target="_blank" rel="noopener noreferrer">TikTok</a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 BW THE BARBER. All Rights Reserved.</p>
+</footer>
+
+<script>
+"use strict";
+
+function getWIBParts() {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Jakarta",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23"
+  }).formatToParts(new Date());
+
+  const get = type => parts.find(p => p.type === type).value;
+
+  return {
+    date: `${get("year")}-${get("month")}-${get("day")}`,
+    hour: Number(get("hour")),
+    minute: Number(get("minute"))
+  };
+}
+
+const namaInput = document.getElementById("nama");
+const layananSelect = document.getElementById("layanan");
+const tanggalInput = document.getElementById("tanggal");
+const jamSelect = document.getElementById("jam");
+const tombolBooking = document.getElementById("bookingButton");
+
+tanggalInput.min = getWIBParts().date;
+
+function updateJam() {
   const now = getWIBParts();
-  const selectedDate = dateInput.value;
+  const tanggal = tanggalInput.value;
 
-  timeSelect.replaceChildren();
+  jamSelect.innerHTML = '<option value="">Pilih Jam</option>';
 
-  const firstOption = document.createElement("option");
-  firstOption.value = "";
-  firstOption.textContent = selectedDate
-    ? "Pilih Jam"
-    : "Pilih tanggal terlebih dahulu";
+  if (!tanggal) return;
 
-  timeSelect.appendChild(firstOption);
-
-  if (!selectedDate) return;
-
-  for (let hour = 10; hour <= 22; hour++) {
-
-    // JAM YANG SUDAH LEWAT TIDAK DITAMPILKAN
+  for (let h = 10; h <= 22; h++) {
     if (
-      selectedDate === now.date &&
-      (hour < now.hour || (hour === now.hour && now.minute > 0))
+      tanggal === now.date &&
+      (h < now.hour || (h === now.hour && now.minute > 0))
     ) {
       continue;
     }
 
+    const jam = String(h).padStart(2, "0") + ":00 WIB";
     const option = document.createElement("option");
 
-    option.value =
-      String(hour).padStart(2, "0") + ":00 WIB";
+    option.value = jam;
+    option.textContent = jam;
 
-    option.textContent = option.value;
-
-    timeSelect.appendChild(option);
+    jamSelect.appendChild(option);
   }
 
-  if (timeSelect.options.length === 1) {
-    firstOption.textContent = "Jam hari ini sudah tutup";
+  if (jamSelect.options.length === 1) {
+    jamSelect.options[0].textContent = "Jam sudah tutup";
   }
 }
 
-// UPDATE PILIHAN JAM SAAT TANGGAL BERUBAH
-dateInput.addEventListener("change", refreshTimeOptions);
+tanggalInput.addEventListener("change", updateJam);
 
-// FUNGSI BOOKING WHATSAPP
-function handleBooking() {
+function bookingWA() {
+  const nama = namaInput.value.trim();
 
-  const name = nameInput.value.trim();
-  const serviceValue = serviceSelect.value;
-  const date = dateInput.value;
-  const time = timeSelect.value;
+  // MEMBACA LAYANAN LANGSUNG DARI PILIHAN DROPDOWN
+  const layanan =
+    layananSelect.options[layananSelect.selectedIndex]?.value || "";
 
-  // VALIDASI NAMA
-  if (!name) {
-    alert("Nama belum diisi. Silakan masukkan nama Anda.");
-    nameInput.focus();
+  const tanggal = tanggalInput.value;
+  const jam = jamSelect.value;
+
+  if (!nama) {
+    alert("Silakan isi nama Anda.");
+    namaInput.focus();
     return;
   }
 
-  // VALIDASI LAYANAN
-  if (!serviceValue) {
-    alert("Layanan belum dipilih. Silakan pilih layanan.");
-    serviceSelect.focus();
+  if (!layanan) {
+    alert("Silakan pilih layanan.");
+    layananSelect.focus();
     return;
   }
 
-  // VALIDASI TANGGAL
-  if (!date) {
-    alert("Tanggal booking belum dipilih.");
-    dateInput.focus();
+  if (!tanggal) {
+    alert("Silakan pilih tanggal booking.");
+    tanggalInput.focus();
     return;
   }
 
-  // VALIDASI JAM
-  if (!time) {
-    alert("Jam booking belum dipilih.");
-    timeSelect.focus();
+  if (!jam) {
+    alert("Silakan pilih jam booking.");
+    jamSelect.focus();
     return;
   }
 
   const now = getWIBParts();
 
-  // CEK TANGGAL LAMPAU
-  if (date < now.date) {
-    alert("Tanggal booking tidak boleh di masa lalu.");
-    dateInput.focus();
+  if (tanggal < now.date) {
+    alert("Tanggal tidak boleh di masa lalu.");
+    tanggalInput.focus();
     return;
   }
 
-  // CEK JAM LAMPAU UNTUK HARI INI
-  if (date === now.date) {
-
-    const selectedHour = Number(time.slice(0, 2));
+  if (tanggal === now.date) {
+    const jamPilihan = Number(jam.substring(0, 2));
 
     if (
-      selectedHour < now.hour ||
-      (selectedHour === now.hour && now.minute > 0)
+      jamPilihan < now.hour ||
+      (jamPilihan === now.hour && now.minute > 0)
     ) {
-      alert("Jam tersebut sudah lewat. Silakan pilih jam lain.");
-      refreshTimeOptions();
-      timeSelect.focus();
+      alert("Jam sudah lewat. Silakan pilih jam lain.");
+      updateJam();
+      jamSelect.focus();
       return;
     }
   }
 
-  // MEMBACA LAYANAN DAN HARGA
-  const serviceParts = serviceValue.split("|");
+  const dataLayanan = layanan.split("|");
+  const namaLayanan = dataLayanan[0];
+  const harga = Number(dataLayanan[1]);
 
-  if (
-    serviceParts.length !== 2 ||
-    !serviceParts[0] ||
-    !serviceParts[1]
-  ) {
-    alert("Pilihan layanan tidak valid. Silakan pilih ulang.");
-    serviceSelect.focus();
+  if (!namaLayanan || !harga) {
+    alert("Layanan tidak valid. Silakan pilih ulang.");
+    layananSelect.focus();
     return;
   }
 
-  const serviceName = serviceParts[0];
-  const price = Number(serviceParts[1]);
+  const hargaFormat =
+    "Rp" + harga.toLocaleString("id-ID");
 
-  if (!Number.isFinite(price) || price <= 0) {
-    alert("Harga layanan tidak valid. Silakan pilih ulang.");
-    serviceSelect.focus();
-    return;
-  }
-
-  const formattedPrice =
-    "Rp" + price.toLocaleString("id-ID");
-
-  // FORMAT TANGGAL
-  const formattedDate =
-    new Date(date + "T12:00:00").toLocaleDateString("id-ID", {
+  const tanggalFormat =
+    new Date(tanggal + "T12:00:00").toLocaleDateString("id-ID", {
       day: "numeric",
       month: "long",
       year: "numeric"
     });
 
-  // NOMOR WHATSAPP BW THE BARBER
-  const phoneNumber = "6282211122979";
+  const pesan =
+    "Halo BW THE BARBER, saya ingin booking:\n\n" +
+    "Nama: " + nama + "\n" +
+    "Layanan: " + namaLayanan + "\n" +
+    "Harga: " + hargaFormat + "\n" +
+    "Tanggal: " + tanggalFormat + "\n" +
+    "Jam: " + jam + "\n\n" +
+    "Mohon konfirmasi booking saya. Terima kasih.";
 
-  // PESAN BOOKING
-  const message = [
-    "Halo BW THE BARBER, saya ingin booking:",
-    "",
-    "Nama: " + name,
-    "Layanan: " + serviceName,
-    "Harga: " + formattedPrice,
-    "Tanggal: " + formattedDate,
-    "Jam: " + time,
-    "",
-    "Mohon konfirmasi booking saya. Terima kasih."
-  ].join("\n");
+  const nomorWA = "6282211122979";
 
-  // URL WHATSAPP
-  const whatsappURL =
+  const linkWA =
     "https://wa.me/" +
-    phoneNumber +
+    nomorWA +
     "?text=" +
-    encodeURIComponent(message);
+    encodeURIComponent(pesan);
 
-  // BUKA WHATSAPP
-  window.location.assign(whatsappURL);
+  window.location.href = linkWA;
 }
 
-// TOMBOL BOOKING
-bookingButton.addEventListener("click", handleBooking);
+tombolBooking.addEventListener("click", bookingWA);
 
-// INISIALISASI PILIHAN JAM
-refreshTimeOptions();
-
+updateJam();
 </script>
 </body>
 </html>
