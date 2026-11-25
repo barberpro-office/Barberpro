@@ -259,12 +259,12 @@ dengan gaya terbaiknya.
 
 <script>
 function bookingWA() {
-  const nama = document.getElementById("nama").value;
+  const nama = document.getElementById("nama").value.trim();
   const layanan = document.getElementById("layanan").value;
   const tanggal = document.getElementById("tanggal").value;
   const jam = document.getElementById("jam").value;
 
-  if (!nama || !layanan || !tanggal || !jam) {
+  if (nama === "" || layanan === "" || tanggal === "" || jam === "") {
     alert("Mohon lengkapi nama, layanan, tanggal, dan jam booking!");
     return;
   }
@@ -280,9 +280,11 @@ Jam: ${jam}
 
 Mohon konfirmasi booking saya.`;
 
-const url = "https://wa.me/" + nomorWA + "?text=" + encodeURIComponent(pesan);
-window.open(url, "_blank");
+  const url = "https://wa.me/" + nomorWA + "?text=" + encodeURIComponent(pesan);
+
+  window.open(url, "_blank");
 }
+
 </script>
 
 </body>
