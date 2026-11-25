@@ -2,430 +2,317 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BW THE BARBER</title>
-<meta name="description" content="BW THE BARBER - barber profesional. Booking melalui WhatsApp.">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:Arial,Helvetica,sans-serif;background:#f8f6f2;color:#222;line-height:1.6}
-header{background:#fff;padding:18px 7%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;border-bottom:1px solid #e8e3dc}
-.logo{font-size:24px;font-weight:bold;letter-spacing:2px}
-nav{display:flex;flex-wrap:wrap;gap:20px}
-nav a{color:#333;text-decoration:none;font-weight:600;font-size:14px}
-nav a:hover{color:#b18a47}
-.hero{text-align:center;padding:100px 20px;background:#eee8df}
-.hero h1{font-size:clamp(32px,6vw,55px);margin-bottom:15px;letter-spacing:2px}
-.hero p{max-width:600px;margin:auto;color:#555;font-size:17px}
-.btn{display:inline-block;margin-top:25px;background:#1c1c1c;color:#fff;padding:13px 28px;border-radius:8px;text-decoration:none;border:0;cursor:pointer;font-weight:bold;transition:.3s}
-.btn:hover,button:hover{background:#b18a47}
-section{padding:75px 7%}
-section h2{text-align:center;margin-bottom:15px;font-size:32px}
-.section-desc{text-align:center;color:#666;margin-bottom:40px}
-.services{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.service-card{background:#fff;padding:25px;border-radius:12px;border:1px solid #e8e3dc;transition:.3s}
-.service-card:hover{transform:translateY(-4px);box-shadow:0 8px 25px rgba(0,0,0,.06)}
-.service-card h3{margin-bottom:10px;font-size:19px}
-.service-card p{color:#666;font-size:14px;margin-bottom:12px}
-.price{color:#a47b37;font-weight:bold;font-size:17px}
-.about,.social{background:#eee8df;text-align:center}
-.about p{max-width:750px;margin:0 auto 25px;color:#555}
-.hours-box{max-width:450px;margin:30px auto 0;padding:25px;background:#fff;border-radius:12px;border:1px solid #e8e3dc}
-.hours-box h3{margin-bottom:10px}
-.hours-box strong{color:#a47b37;font-size:22px}
-.booking-container{max-width:600px;margin:auto;background:#fff;padding:30px;border-radius:14px;border:1px solid #e8e3dc;box-shadow:0 5px 20px rgba(0,0,0,.04)}
-.booking-container input,.booking-container select{width:100%;padding:14px;margin-bottom:16px;border:1px solid #ddd;border-radius:8px;font-size:16px;background:#fff;color:#333}
-.booking-container input:focus,.booking-container select:focus{outline:none;border-color:#b18a47}
-.booking-container button{width:100%;padding:15px;background:#1c1c1c;color:white;border:0;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;transition:.3s}
-.booking-note{text-align:center;font-size:13px;color:#777;margin-top:15px}
-.social-links{display:flex;justify-content:center;flex-wrap:wrap;gap:15px;margin-top:25px}
-.social-links a{display:inline-block;padding:12px 25px;border-radius:8px;background:#1c1c1c;color:#fff;text-decoration:none;font-weight:bold;transition:.3s}
-.social-links a:hover{background:#b18a47}
-footer{text-align:center;background:#1c1c1c;color:#fff;padding:25px 15px;font-size:14px}
-@media(max-width:768px){header{justify-content:center;text-align:center}nav{justify-content:center}.services{grid-template-columns:repeat(2,1fr)}.hero{padding:75px 20px}section{padding:55px 5%}}
-@media(max-width:480px){.services{grid-template-columns:1fr}.booking-container{padding:20px}section h2{font-size:27px}nav{gap:12px}nav a{font-size:13px}}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f7f5f1;color:#222}
+header{background:#1d1d1d;color:#fff;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+header h1{margin:0;font-size:1.4rem;letter-spacing:1px}
+nav{display:flex;gap:18px;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none}
+.hero{text-align:center;padding:75px 20px;background:linear-gradient(135deg,#242424,#45413b);color:#fff}
+.hero h2{font-size:clamp(2rem,5vw,3.4rem);margin:0 0 16px}
+.hero p{font-size:1.1rem;line-height:1.6}
+section{padding:55px 20px}
+.section-wrap{max-width:1100px;margin:auto}
+h2{text-align:center;font-size:2rem;margin:0 0 20px}
+.section-desc{text-align:center;color:#666;font-size:1.05rem;line-height:1.6}
+.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:30px}
+.service-card{background:#fff;border:1px solid #e8e1d8;border-radius:16px;padding:24px;text-align:center;box-shadow:0 4px 14px rgba(0,0,0,.04)}
+.service-card h3{margin:0 0 12px}
+.price{font-weight:bold;color:#8b6729}
+.about{background:#eee8df}
+.booking-section{background:#f7f5f1}
+.booking-container{max-width:720px;margin:35px auto 0;background:#fff;padding:32px;border:1px solid #e8e1d8;border-radius:24px;box-shadow:0 8px 28px rgba(0,0,0,.04)}
+.booking-container input,.booking-container select{width:100%;padding:18px 16px;margin:0 0 16px;border:1px solid #d8d8d8;border-radius:12px;background:#fff;font-size:1.05rem;color:#222;min-height:60px}
+.booking-container button{width:100%;padding:18px;border:0;border-radius:12px;background:#1d1d1d;color:#fff;font-size:1.08rem;font-weight:bold;cursor:pointer}
+.booking-container button:active{opacity:.8}
+.booking-note{text-align:center;color:#777;line-height:1.6;margin:22px 0 0}
+.social{background:#eee8df;text-align:center}
+.social-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:30px}
+.social-links a{background:#1d1d1d;color:#fff;padding:16px 30px;border-radius:12px;text-decoration:none;font-weight:bold}
+footer{text-align:center;background:#1d1d1d;color:#fff;padding:22px}
+@media(max-width:850px){.services{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){header{justify-content:center;text-align:center}nav{justify-content:center}.services{grid-template-columns:1fr}.booking-container{padding:22px}section{padding:45px 16px}}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">BW THE BARBER</div>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#layanan">Layanan</a>
-    <a href="#tentang">Tentang</a>
-    <a href="#booking">Booking</a>
-  </nav>
+<h1>BW THE BARBER</h1>
+<nav>
+<a href="#layanan">Layanan</a>
+<a href="#tentang">Tentang</a>
+<a href="#booking">Booking</a>
+</nav>
 </header>
 
-<section class="hero" id="home">
-  <h1>BW THE BARBER</h1>
-  <p>Elevate Your Style. Potongan rambut profesional, pelayanan terbaik, dan gaya yang membuat Anda tampil percaya diri.</p>
-  <a href="#booking" class="btn">Booking Sekarang</a>
+<section class="hero">
+<h2>BW THE BARBER</h2>
+<p>Gaya terbaik, pelayanan profesional, dan pengalaman grooming yang nyaman.</p>
 </section>
 
 <section id="layanan">
-  <h2>Layanan Kami</h2>
-  <p class="section-desc">Pilih layanan terbaik untuk gaya Anda.</p>
+<div class="section-wrap">
+<h2>Layanan Kami</h2>
+<p class="section-desc">Pilih layanan grooming sesuai gaya Anda.</p>
 
-  <div class="services">
-    <div class="service-card">
-      <h3>Haircut + Wash</h3>
-      <p>Potongan rambut profesional disertai pencucian rambut.</p>
-      <div class="price">Rp50.000</div>
-    </div>
-
-    <div class="service-card">
-      <h3>Hair Coloring</h3>
-      <p>Pewarnaan rambut untuk penampilan yang lebih stylish.</p>
-      <div class="price">Mulai Rp400.000</div>
-    </div>
-
-    <div class="service-card">
-      <h3>Treatment Keratin</h3>
-      <p>Perawatan rambut untuk membantu rambut lebih lembut.</p>
-      <div class="price">Mulai Rp400.000</div>
-    </div>
-
-    <div class="service-card">
-      <h3>Creambath</h3>
-      <p>Perawatan rambut dan kulit kepala dengan relaksasi.</p>
-      <div class="price">Rp100.000</div>
-    </div>
-
-    <div class="service-card">
-      <h3>Perming</h3>
-      <p>Memberikan tekstur dan bentuk ikal pada rambut.</p>
-      <div class="price">Mulai Rp300.000</div>
-    </div>
-
-    <div class="service-card">
-      <h3>Down Perm</h3>
-      <p>Membantu merapikan rambut yang mengembang.</p>
-      <div class="price">Rp300.000</div>
-    </div>
-
-    <div class="service-card">
-      <h3>Korean Perm</h3>
-      <p>Gaya perm modern dengan look khas Korea.</p>
-      <div class="price">Rp350.000</div>
-    </div>
-
-    <div class="service-card">
-      <h3>Smoothing</h3>
-      <p>Perawatan untuk rambut lebih halus dan mudah diatur.</p>
-      <div class="price">Mulai Rp400.000</div>
-    </div>
-  </div>
+<div class="services">
+<div class="service-card"><h3>Haircut + Wash</h3><div class="price">Rp50.000</div></div>
+<div class="service-card"><h3>Hair Coloring</h3><div class="price">Mulai Rp400.000</div></div>
+<div class="service-card"><h3>Treatment Keratin</h3><div class="price">Mulai Rp400.000</div></div>
+<div class="service-card"><h3>Creambath</h3><div class="price">Rp100.000</div></div>
+<div class="service-card"><h3>Perming</h3><div class="price">Mulai Rp300.000</div></div>
+<div class="service-card"><h3>Down Perm</h3><div class="price">Rp300.000</div></div>
+<div class="service-card"><h3>Korean Perm</h3><div class="price">Rp350.000</div></div>
+<div class="service-card"><h3>Smoothing</h3><div class="price">Mulai Rp400.000</div></div>
+</div>
+</div>
 </section>
 
 <section class="about" id="tentang">
-  <h2>Tentang BW THE BARBER</h2>
-  <p>BW THE BARBER hadir untuk memberikan pengalaman potong rambut yang nyaman, profesional, dan berkualitas. Kami percaya setiap pria berhak tampil percaya diri dengan gaya terbaiknya.</p>
+<div class="section-wrap">
+<h2>Tentang BW THE BARBER</h2>
+<p class="section-desc">
+BW THE BARBER hadir untuk memberikan pengalaman grooming yang nyaman,
+profesional, dan berkualitas. Kami percaya setiap pria berhak tampil
+percaya diri dengan gaya terbaiknya.
+</p>
 
-  <div class="hours-box">
-    <h3>Jam Operasional</h3>
-    <p>Setiap Hari</p>
-    <strong>10.00 – 22.00 WIB</strong>
-  </div>
+<div class="service-card" style="max-width:600px;margin:24px auto 0">
+<h3>Jam Operasional</h3>
+<p><strong>Setiap Hari</strong><br>10.00 – 22.00 WIB</p>
+</div>
+</div>
 </section>
 
-<section id="booking">
-  <h2>Booking Jadwal Anda</h2>
-  <p class="section-desc">Pilih hari dan jam potong rambut Anda.</p>
+<section class="booking-section" id="booking">
+<div class="section-wrap">
+<h2>Booking Jadwal Anda</h2>
+<p class="section-desc">Pilih hari dan jam potong rambut Anda.</p>
 
-  <div class="booking-container">
-    <input type="text" id="nama" placeholder="Nama Anda" autocomplete="name">
+<div class="booking-container">
 
-    <select id="layanan">
-      <option value="">Pilih Layanan</option>
-      <option value="Haircut + Wash|50000">Haircut + Wash - Rp50.000</option>
-      <option value="Hair Coloring|400000">Hair Coloring - Mulai Rp400.000</option>
-      <option value="Treatment Keratin|400000">Treatment Keratin - Mulai Rp400.000</option>
-      <option value="Creambath|100000">Creambath - Rp100.000</option>
-      <option value="Perming|300000">Perming - Mulai Rp300.000</option>
-      <option value="Down Perm|300000">Down Perm - Rp300.000</option>
-      <option value="Korean Perm|350000">Korean Perm - Rp350.000</option>
-      <option value="Smoothing|400000">Smoothing - Mulai Rp400.000</option>
-    </select>
+<input type="text" id="nama" placeholder="Nama Anda" autocomplete="name">
 
-    <input type="date" id="tanggal">
+<select id="layanan" aria-label="Pilih layanan">
+<option value="">Pilih Layanan</option>
+<option value="Haircut + Wash|50000">Haircut + Wash - Rp50.000</option>
+<option value="Hair Coloring|400000">Hair Coloring - Mulai Rp400.000</option>
+<option value="Treatment Keratin|400000">Treatment Keratin - Mulai Rp400.000</option>
+<option value="Creambath|100000">Creambath - Rp100.000</option>
+<option value="Perming|300000">Perming - Mulai Rp300.000</option>
+<option value="Down Perm|300000">Down Perm - Rp300.000</option>
+<option value="Korean Perm|350000">Korean Perm - Rp350.000</option>
+<option value="Smoothing|400000">Smoothing - Mulai Rp400.000</option>
+</select>
 
-    <select id="jam">
-      <option value="">Pilih Jam</option>
-    </select>
+<input type="date" id="tanggal" aria-label="Tanggal booking">
 
-    <button type="button" id="bookingButton">
-      Booking via WhatsApp
-    </button>
+<select id="jam" aria-label="Pilih jam">
+<option value="">Pilih Jam</option>
+</select>
 
-    <p class="booking-note">
-      Booking akan diteruskan ke WhatsApp untuk konfirmasi.
-    </p>
-  </div>
+<button type="button" id="bookingButton">
+Booking via WhatsApp
+</button>
+
+<p class="booking-note">
+Booking akan diteruskan ke WhatsApp untuk konfirmasi.
+</p>
+
+</div>
+</div>
 </section>
 
 <section class="social">
-  <h2>Follow Kami</h2>
-  <p class="section-desc">Ikuti media sosial BW THE BARBER.</p>
+<div class="section-wrap">
+<h2>Follow Kami</h2>
+<p class="section-desc">Ikuti media sosial BW THE BARBER.</p>
 
-  <div class="social-links">
-    <a href="https://www.instagram.com/bw.hair.studio/"
-       target="_blank" rel="noopener noreferrer">Instagram</a>
-
-    <a href="https://www.tiktok.com/@barber.academy.pky"
-       target="_blank" rel="noopener noreferrer">TikTok</a>
-  </div>
+<div class="social-links">
+<a href="https://www.instagram.com/bw.hair.studio/" target="_blank" rel="noopener noreferrer">Instagram</a>
+<a href="https://www.tiktok.com/@barber.academy.pky" target="_blank" rel="noopener noreferrer">TikTok</a>
+</div>
+</div>
 </section>
 
 <footer>
-  <p>&copy; 2026 BW THE BARBER. All Rights Reserved.</p>
+<p>&copy; 2026 BW THE BARBER. All Rights Reserved.</p>
 </footer>
 
 <script>
 "use strict";
 
-// WAKTU WIB
-function getWIBParts() {
-  const parts = new Intl.DateTimeFormat("en-CA", {
-    timeZone: "Asia/Jakarta",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    hourCycle: "h23"
-  }).formatToParts(new Date());
+(function(){
 
-  const get = type => parts.find(part => part.type === type).value;
+  const nameEl = document.getElementById("nama");
+  const serviceEl = document.getElementById("layanan");
+  const dateEl = document.getElementById("tanggal");
+  const timeEl = document.getElementById("jam");
+  const buttonEl = document.getElementById("bookingButton");
 
-  return {
-    date: `${get("year")}-${get("month")}-${get("day")}`,
-    hour: Number(get("hour")),
-    minute: Number(get("minute"))
-  };
-}
+  if (!nameEl || !serviceEl || !dateEl || !timeEl || !buttonEl) {
+    console.error("Booking form elements missing");
+    return;
+  }
 
-// REFERENSI ELEMEN FORM
-const nameInput = document.getElementById("nama");
-const serviceSelect = document.getElementById("layanan");
-const dateInput = document.getElementById("tanggal");
-const timeSelect = document.getElementById("jam");
-const bookingButton = document.getElementById("// TANGGAL MINIMUM
-dateInput.min = getWIBParts().date;
-<section id="booking">
-  <h2>Booking Jadwal Anda</h2>
-  <p class="section-desc">Pilih hari dan jam potong rambut Anda.</p>
+  function partsWIB() {
+    const p = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Asia/Jakarta",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      hourCycle: "h23"
+    }).formatToParts(new Date());
 
-  <div class="booking-container">
-    <input type="text" id="nama" placeholder="Nama Anda">
+    const v = t => p.find(x => x.type === t).value;
 
-    <select id="layanan">
-      <option value="Haircut + Wash|50000">Haircut + Wash - Rp50.000</option>
-      <option value="Hair Coloring|400000">Hair Coloring - Mulai Rp400.000</option>
-      <option value="Treatment Keratin|400000">Treatment Keratin - Mulai Rp400.000</option>
-      <option value="Creambath|100000">Creambath - Rp100.000</option>
-      <option value="Perming|300000">Perming - Mulai Rp300.000</option>
-      <option value="Down Perm|300000">Down Perm - Rp300.000</option>
-      <option value="Korean Perm|350000">Korean Perm - Rp350.000</option>
-      <option value="Smoothing|400000">Smoothing - Mulai Rp400.000</option>
-    </select>
+    return {
+      date: v("year") + "-" + v("month") + "-" + v("day"),
+      hour: Number(v("hour")),
+      minute: Number(v("minute"))
+    };
+  }
 
-    <input type="date" id="tanggal">
+  function fillTimes() {
+    const current = partsWIB();
+    const chosen = dateEl.value;
 
-    <select id="jam">
-      <option value="">Pilih Jam</option>
-    </select>
+    timeEl.replaceChildren();
 
-    <button type="button" id="bookingButton">
-      Booking via WhatsApp
-    </button>
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = "Pilih Jam";
+    timeEl.appendChild(placeholder);
 
-    <p class="booking-note">
-      Booking akan diteruskan ke WhatsApp untuk konfirmasi.
-    </p>
-  </div>
-</section>
+    if (!chosen) return;
 
-<section class="social">
-  <h2>Follow Kami</h2>
-  <p class="section-desc">Ikuti media sosial BW THE BARBER.</p>
+    for (let h = 10; h <= 22; h++) {
 
-  <div class="social-links">
-    <a href="https://www.instagram.com/bw.hair.studio/"
-       target="_blank" rel="noopener noreferrer">Instagram</a>
+      if (
+        chosen === current.date &&
+        (h < current.hour ||
+        (h === current.hour && current.minute > 0))
+      ) {
+        continue;
+      }
 
-    <a href="https://www.tiktok.com/@barber.academy.pky"
-       target="_blank" rel="noopener noreferrer">TikTok</a>
-  </div>
-</section>
+      const opt = document.createElement("option");
+      opt.value = String(h).padStart(2, "0") + ":00 WIB";
+      opt.textContent = opt.value;
 
-<footer>
-  <p>&copy; 2026 BW THE BARBER. All Rights Reserved.</p>
-</footer>
-
-<script>
-"use strict";
-
-function getWIBParts() {
-  const parts = new Intl.DateTimeFormat("en-CA", {
-    timeZone: "Asia/Jakarta",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    hourCycle: "h23"
-  }).formatToParts(new Date());
-
-  const get = type => parts.find(p => p.type === type).value;
-
-  return {
-    date: `${get("year")}-${get("month")}-${get("day")}`,
-    hour: Number(get("hour")),
-    minute: Number(get("minute"))
-  };
-}
-
-const namaInput = document.getElementById("nama");
-const layananSelect = document.getElementById("layanan");
-const tanggalInput = document.getElementById("tanggal");
-const jamSelect = document.getElementById("jam");
-const tombolBooking = document.getElementById("bookingButton");
-
-tanggalInput.min = getWIBParts().date;
-
-function updateJam() {
-  const now = getWIBParts();
-  const tanggal = tanggalInput.value;
-
-  jamSelect.innerHTML = '<option value="">Pilih Jam</option>';
-
-  if (!tanggal) return;
-
-  for (let h = 10; h <= 22; h++) {
-    if (
-      tanggal === now.date &&
-      (h < now.hour || (h === now.hour && now.minute > 0))
-    ) {
-      continue;
+      timeEl.appendChild(opt);
     }
 
-    const jam = String(h).padStart(2, "0") + ":00 WIB";
-    const option = document.createElement("option");
-
-    option.value = jam;
-    option.textContent = jam;
-
-    jamSelect.appendChild(option);
+    if (timeEl.options.length === 1) {
+      placeholder.textContent = "Jam operasional hari ini selesai";
+    }
   }
 
-  if (jamSelect.options.length === 1) {
-    jamSelect.options[0].textContent = "Jam sudah tutup";
-  }
-}
+  dateEl.min = partsWIB().date;
 
-tanggalInput.addEventListener("change", updateJam);
+  dateEl.addEventListener("input", fillTimes);
+  dateEl.addEventListener("change", fillTimes);
 
-function bookingWA() {
-  const nama = namaInput.value.trim();
+  function submitBooking() {
 
-  // MEMBACA LAYANAN LANGSUNG DARI PILIHAN DROPDOWN
-  const layanan =
-    layananSelect.options[layananSelect.selectedIndex]?.value || "";
+    const customer = nameEl.value.trim();
+    const service = serviceEl.value;
+    const day = dateEl.value;
+    const time = timeEl.value;
 
-  const tanggal = tanggalInput.value;
-  const jam = jamSelect.value;
-
-  if (!nama) {
-    alert("Silakan isi nama Anda.");
-    namaInput.focus();
-    return;
-  }
-
-  if (!layanan) {
-    alert("Silakan pilih layanan.");
-    layananSelect.focus();
-    return;
-  }
-
-  if (!tanggal) {
-    alert("Silakan pilih tanggal booking.");
-    tanggalInput.focus();
-    return;
-  }
-
-  if (!jam) {
-    alert("Silakan pilih jam booking.");
-    jamSelect.focus();
-    return;
-  }
-
-  const now = getWIBParts();
-
-  if (tanggal < now.date) {
-    alert("Tanggal tidak boleh di masa lalu.");
-    tanggalInput.focus();
-    return;
-  }
-
-  if (tanggal === now.date) {
-    const jamPilihan = Number(jam.substring(0, 2));
-
-    if (
-      jamPilihan < now.hour ||
-      (jamPilihan === now.hour && now.minute > 0)
-    ) {
-      alert("Jam sudah lewat. Silakan pilih jam lain.");
-      updateJam();
-      jamSelect.focus();
+    if (!customer) {
+      alert("Silakan isi nama Anda.");
+      nameEl.focus();
       return;
     }
+
+    if (!service) {
+      alert("Silakan pilih layanan.");
+      serviceEl.focus();
+      return;
+    }
+
+    if (!day) {
+      alert("Silakan pilih tanggal.");
+      dateEl.focus();
+      return;
+    }
+
+    if (!time) {
+      alert("Silakan pilih jam booking.");
+      timeEl.focus();
+      return;
+    }
+
+    const now = partsWIB();
+
+    if (day < now.date) {
+      alert("Tanggal booking tidak boleh di masa lalu.");
+      dateEl.focus();
+      return;
+    }
+
+    if (day === now.date) {
+      const hh = Number(time.slice(0, 2));
+
+      if (
+        hh < now.hour ||
+        (hh === now.hour && now.minute > 0)
+      ) {
+        alert("Jam tersebut sudah lewat. Pilih jam lain.");
+        fillTimes();
+        timeEl.focus();
+        return;
+      }
+    }
+
+    const s = service.split("|");
+    const serviceName = s[0];
+    const price = Number(s[1]);
+
+    if (!serviceName || !Number.isFinite(price) || price <= 0) {
+      alert("Layanan tidak valid. Silakan pilih ulang.");
+      serviceEl.focus();
+      return;
+    }
+
+    const priceText = "Rp" + price.toLocaleString("id-ID");
+
+    const dateText = new Date(day + "T12:00:00")
+      .toLocaleDateString("id-ID", {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      });
+
+    const message =
+      "Halo BW THE BARBER, saya ingin booking:\n\n" +
+      "Nama: " + customer + "\n" +
+      "Layanan: " + serviceName + "\n" +
+      "Harga: " + priceText + "\n" +
+      "Tanggal: " + dateText + "\n" +
+      "Jam: " + time + "\n\n" +
+      "Mohon konfirmasi booking saya. Terima kasih.";
+
+    const wa =
+      "https://wa.me/6282211122979?text=" +
+      encodeURIComponent(message);
+
+    window.location.href = wa;
   }
 
-  const dataLayanan = layanan.split("|");
-  const namaLayanan = dataLayanan[0];
-  const harga = Number(dataLayanan[1]);
+  buttonEl.addEventListener("click", submitBooking);
 
-  if (!namaLayanan || !harga) {
-    alert("Layanan tidak valid. Silakan pilih ulang.");
-    layananSelect.focus();
-    return;
-  }
+  fillTimes();
 
-  const hargaFormat =
-    "Rp" + harga.toLocaleString("id-ID");
-
-  const tanggalFormat =
-    new Date(tanggal + "T12:00:00").toLocaleDateString("id-ID", {
-      day: "numeric",
-      month: "long",
-      year: "numeric"
-    });
-
-  const pesan =
-    "Halo BW THE BARBER, saya ingin booking:\n\n" +
-    "Nama: " + nama + "\n" +
-    "Layanan: " + namaLayanan + "\n" +
-    "Harga: " + hargaFormat + "\n" +
-    "Tanggal: " + tanggalFormat + "\n" +
-    "Jam: " + jam + "\n\n" +
-    "Mohon konfirmasi booking saya. Terima kasih.";
-
-  const nomorWA = "6282211122979";
-
-  const linkWA =
-    "https://wa.me/" +
-    nomorWA +
-    "?text=" +
-    encodeURIComponent(pesan);
-
-  window.location.href = linkWA;
-}
-
-tombolBooking.addEventListener("click", bookingWA);
-
-updateJam();
+})();
 </script>
+
 </body>
 </html>
