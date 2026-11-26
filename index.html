@@ -3,50 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0b0b0b">
+<meta name="theme-color" content="#0a0a0a">
 <title>BW THE BARBER</title>
 
 <style>
-:root {
-  --bg: #0b0b0b;
-  --panel: #171717;
-  --cream: #f4eee3;
-  --gold: #c8a96a;
-  --muted: #a9a39a;
-}
-
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--cream);
+  background: #0a0a0a;
+  color: #f5f0e8;
   font-family: Arial, Helvetica, sans-serif;
+  padding-bottom: 95px;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+:root {
+  --gold: #d1ad70;
+  --bg: #0a0a0a;
+  --card: #161616;
+  --muted: #99938b;
 }
 
-.wrap {
-  max-width: 960px;
+.container {
+  max-width: 600px;
   margin: auto;
   padding: 0 18px;
 }
 
+/* HEADER */
+
 header {
-  padding: 22px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #0a0a0aee;
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid #252525;
+}
+
+.header-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #262626;
+  padding: 17px 18px;
+  max-width: 600px;
+  margin: auto;
 }
 
 .logo {
-  font-size: 22px;
+  font-size: 19px;
   font-weight: 900;
   letter-spacing: 2px;
 }
@@ -55,318 +67,541 @@ header {
   color: var(--gold);
 }
 
-nav {
-  display: flex;
-  gap: 20px;
-  font-size: 13px;
-  color: var(--muted);
+.status {
+  font-size: 10px;
+  color: var(--gold);
+  border: 1px solid #4d3e27;
+  border-radius: 30px;
+  padding: 7px 10px;
 }
+
+/* HERO */
 
 .hero {
-  min-height: 460px;
-  padding: 60px 0;
-  display: flex;
-  align-items: center;
+  padding: 25px 18px;
+}
+
+.hero-card {
+  min-height: 450px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
   background:
-  linear-gradient(90deg,#0b0b0b 8%,rgba(11,11,11,.85) 50%,rgba(11,11,11,.2)),
-  url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1400&q=85')
-  center/cover;
+    linear-gradient(
+      180deg,
+      #00000022 0%,
+      #00000055 40%,
+      #000000ee 100%
+    ),
+    url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1200&q=85')
+    center/cover;
+  display: flex;
+  align-items: flex-end;
 }
 
-.tag {
+.hero-content {
+  padding: 28px;
+}
+
+.hero-tag {
   color: var(--gold);
+  font-size: 10px;
   letter-spacing: 3px;
-  font-size: 12px;
-  font-weight: bold;
+  margin-bottom: 15px;
 }
 
-h1 {
-  font-size: clamp(42px,8vw,74px);
+.hero h1 {
+  font-size: 43px;
   line-height: 1;
-  margin: 16px 0;
-  max-width: 650px;
+  letter-spacing: -2px;
+  margin-bottom: 15px;
+}
+
+.hero h1 span {
+  color: var(--gold);
 }
 
 .hero p {
-  color: #c8c2b9;
-  max-width: 450px;
-  line-height: 1.7;
+  color: #ddd;
+  line-height: 1.6;
+  font-size: 14px;
 }
 
 .btn {
   display: inline-block;
+  border: none;
   background: var(--gold);
   color: #111;
-  font-weight: bold;
   padding: 15px 20px;
-  border: 0;
-  border-radius: 8px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 13px;
+  text-decoration: none;
   cursor: pointer;
-  margin-top: 15px;
-}
-
-section {
-  padding: 50px 0;
-}
-
-.section-title {
-  font-size: 30px;
-  margin: 0 0 8px;
-}
-
-.sub {
-  color: var(--muted);
-  margin-bottom: 25px;
-}
-
-.services {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-  gap: 14px;
-}
-
-.service {
-  background: var(--panel);
-  border: 1px solid #333;
-  padding: 20px;
-  border-radius: 14px;
   transition: .2s;
 }
 
-.service:hover {
-  transform: translateY(-3px);
+.btn:active {
+  transform: scale(.97);
+}
+
+.hero .btn {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+/* INFO */
+
+.info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 0 18px;
+}
+
+.info-card {
+  background: var(--card);
+  border: 1px solid #262626;
+  padding: 18px;
+  border-radius: 16px;
+}
+
+.info-card small {
+  color: var(--muted);
+  display: block;
+  margin-bottom: 8px;
+  font-size: 11px;
+}
+
+.info-card strong {
+  font-size: 14px;
+}
+
+/* SECTION */
+
+section {
+  padding: 35px 18px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.section-label {
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 3px;
+}
+
+.section-title {
+  font-size: 27px;
+  margin-top: 10px;
+}
+
+.section-desc {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+/* SERVICES */
+
+.services {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.service {
+  background: linear-gradient(145deg,#1a1a1a,#111);
+  border: 1px solid #292929;
+  border-radius: 17px;
+  padding: 18px;
+  transition: .2s;
+}
+
+.service:active {
   border-color: var(--gold);
+  transform: scale(.98);
+}
+
+.service-icon {
+  font-size: 24px;
+  margin-bottom: 14px;
 }
 
 .service h3 {
-  margin: 0 0 8px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.service p {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 6px;
 }
 
 .price {
   color: var(--gold);
   font-weight: bold;
+  font-size: 13px;
+  margin-top: 13px;
 }
 
-.booking {
-  background: var(--panel);
+/* BOOKING */
+
+.booking-card {
+  background: linear-gradient(145deg,#1a1a1a,#101010);
   border: 1px solid #333;
-  border-radius: 18px;
-  padding: 24px;
-}
-
-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  border-radius: 22px;
+  padding: 22px;
+  margin-top: 20px;
 }
 
 .field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  margin-bottom: 18px;
 }
 
-.field.full {
-  grid-column: 1/-1;
+.field label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #c6bdb0;
+  margin-bottom: 9px;
 }
 
-label {
-  font-size: 13px;
-  color: #c5bfb6;
-}
-
-input, select {
+.field input,
+.field select {
   width: 100%;
-  padding: 14px;
-  border: 1px solid #3a3a3a;
-  border-radius: 9px;
-  background: #101010;
-  color: var(--cream);
-  font-size: 16px;
+  background: #090909;
+  border: 1px solid #333;
+  color: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 15px;
+  outline: none;
 }
 
-input:focus, select:focus {
-  outline: 1px solid var(--gold);
+.field input:focus,
+.field select:focus {
   border-color: var(--gold);
 }
 
-button.btn {
+.booking-card .btn {
   width: 100%;
-  font-size: 16px;
 }
 
-.note {
-  font-size: 12px;
-  color: var(--muted);
+.booking-note {
+  font-size: 11px;
   line-height: 1.6;
+  color: var(--muted);
+  margin-top: 15px;
 }
 
-footer {
-  border-top: 1px solid #262626;
-  padding: 28px 0;
+/* CONTACT */
+
+.contact-card {
+  background: var(--card);
+  border: 1px solid #292929;
+  border-radius: 18px;
+  padding: 22px;
+}
+
+.contact-card p {
   color: var(--muted);
   font-size: 13px;
+  line-height: 1.7;
+  margin-top: 10px;
 }
 
-.footer-links {
+.socials {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.socials a {
+  text-align: center;
+  padding: 14px;
+  border: 1px solid #383838;
+  color: var(--gold);
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+/* FLOATING WHATSAPP */
+
+.wa-float {
+  position: fixed;
+  right: 18px;
+  bottom: 90px;
+  z-index: 90;
+  background: #25d366;
+  color: #fff;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin: 15px 0;
+  align-items: center;
+  justify-content: center;
+  font-size: 23px;
+  box-shadow: 0 5px 25px #0008;
 }
 
-.footer-links a {
+/* BOTTOM NAV */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: #101010ee;
+  backdrop-filter: blur(15px);
+  border-top: 1px solid #292929;
+  padding: 10px 5px 12px;
+}
+
+.bottom-inner {
+  max-width: 600px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+}
+
+.nav-item {
+  text-align: center;
+  color: #888;
+  font-size: 10px;
+  text-decoration: none;
+}
+
+.nav-item .icon {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.nav-item.active {
   color: var(--gold);
 }
 
-@media(max-width:600px) {
-  nav {
-    gap: 12px;
-  }
+/* FOOTER */
 
-  nav a:nth-child(2) {
-    display: none;
-  }
+footer {
+  text-align: center;
+  padding: 25px 18px;
+  color: #777;
+  font-size: 11px;
+}
 
-  .hero {
-    min-height: 410px;
-    padding: 40px 0;
-  }
+/* ANIMATION */
 
-  form {
-    grid-template-columns: 1fr;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-  .field.full {
-    grid-column: auto;
-  }
-
-  .booking {
-    padding: 18px;
-  }
+.hero-card,
+.service,
+.booking-card {
+  animation: fadeIn .5s ease;
 }
 </style>
 </head>
 
 <body>
 
-<div class="wrap">
+<!-- HEADER -->
+
 <header>
-  <div class="logo">BW <span>THE BARBER</span></div>
+  <div class="header-inner">
 
-  <nav>
-    <a href="#layanan">LAYANAN</a>
-    <a href="#booking">BOOKING</a>
-    <a href="#kontak">KONTAK</a>
-  </nav>
+    <div class="logo">
+      BW <span>THE BARBER</span>
+    </div>
+
+    <div class="status">
+      ● OPEN DAILY
+    </div>
+
+  </div>
 </header>
-</div>
 
-<div class="hero">
-  <div class="wrap">
-    <div>
-      <div class="tag">PREMIUM GROOMING EXPERIENCE</div>
+<!-- HERO -->
 
-      <h1>YOUR STYLE.<br>YOUR STATEMENT.</h1>
+<div class="hero" id="home">
+
+  <div class="hero-card">
+
+    <div class="hero-content">
+
+      <div class="hero-tag">
+        PREMIUM GROOMING EXPERIENCE
+      </div>
+
+      <h1>
+        OWN YOUR<br>
+        <span>STYLE.</span>
+      </h1>
 
       <p>
-        Temukan gaya terbaikmu bersama BW THE BARBER.
-        Perawatan rambut profesional dengan detail,
-        kualitas, dan kenyamanan.
+        Upgrade your look. Elevate your confidence.
+        Pengalaman grooming premium untuk gaya terbaikmu.
       </p>
 
-      <a class="btn" href="#booking">
-        BOOK YOUR SESSION
+      <a href="#booking" class="btn">
+        BOOK YOUR SESSION →
       </a>
+
     </div>
+
   </div>
+
 </div>
 
-<div class="wrap">
+<!-- INFO -->
 
-<section id="layanan">
+<div class="info">
 
-  <div class="tag">OUR SERVICES</div>
+  <div class="info-card">
+    <small>OPENING HOURS</small>
+    <strong>10.00 – 22.00 WIB</strong>
+  </div>
 
-  <h2 class="section-title">Layanan & Harga</h2>
+  <div class="info-card">
+    <small>OPEN EVERY DAY</small>
+    <strong>Monday – Sunday</strong>
+  </div>
 
-  <p class="sub">
-    Pilih layanan untuk penampilan terbaikmu.
+</div>
+
+<!-- SERVICES -->
+
+<section id="services">
+
+  <div class="section-label">
+    OUR SERVICES
+  </div>
+
+  <h2 class="section-title">
+    Explore Services
+  </h2>
+
+  <p class="section-desc">
+    Pilih treatment terbaik untuk penampilanmu.
   </p>
 
   <div class="services">
 
     <div class="service">
+      <div class="service-icon">✂️</div>
       <h3>Haircut + Wash</h3>
+      <p>Cut & wash experience</p>
       <div class="price">Rp50.000</div>
     </div>
 
     <div class="service">
+      <div class="service-icon">🎨</div>
       <h3>Hair Coloring</h3>
+      <p>Color transformation</p>
       <div class="price">Mulai Rp400.000</div>
     </div>
 
     <div class="service">
+      <div class="service-icon">✨</div>
       <h3>Treatment Keratin</h3>
+      <p>Smooth hair treatment</p>
       <div class="price">Mulai Rp400.000</div>
     </div>
 
     <div class="service">
+      <div class="service-icon">🧴</div>
       <h3>Creambath</h3>
+      <p>Relaxing hair care</p>
       <div class="price">Rp100.000</div>
     </div>
 
     <div class="service">
+      <div class="service-icon">〰️</div>
       <h3>Perming</h3>
+      <p>Texture & volume</p>
       <div class="price">Mulai Rp300.000</div>
     </div>
 
     <div class="service">
+      <div class="service-icon">💈</div>
       <h3>Down Perm</h3>
+      <p>Natural & neat</p>
       <div class="price">Rp300.000</div>
     </div>
 
     <div class="service">
+      <div class="service-icon">🇰🇷</div>
       <h3>Korean Perm</h3>
+      <p>Korean hairstyle</p>
       <div class="price">Rp350.000</div>
     </div>
 
     <div class="service">
+      <div class="service-icon">💎</div>
       <h3>Smoothing</h3>
+      <p>Sleek & manageable</p>
       <div class="price">Mulai Rp400.000</div>
     </div>
 
   </div>
+
 </section>
+
+<!-- BOOKING -->
 
 <section id="booking">
 
-  <div class="tag">RESERVATION</div>
+  <div class="section-label">
+    RESERVATION
+  </div>
 
-  <h2 class="section-title">Booking Appointment</h2>
+  <h2 class="section-title">
+    Book Appointment
+  </h2>
 
-  <p class="sub">
-    Isi data berikut, lalu lanjutkan booking melalui WhatsApp.
+  <p class="section-desc">
+    Reservasi mudah. Pilih jadwal dan lanjutkan
+    langsung melalui WhatsApp.
   </p>
 
-  <div class="booking">
+  <div class="booking-card">
 
-    <form id="bookingForm" onsubmit="bookingWhatsApp(event)">
+    <form id="bookingForm"
+          onsubmit="bookingWhatsApp(event)">
 
-      <div class="field full">
-        <label for="nama">Nama</label>
+      <div class="field">
+
+        <label>NAMA LENGKAP</label>
+
         <input
-          id="nama"
           type="text"
-          placeholder="Masukkan nama Anda"
+          id="nama"
+          placeholder="Nama Anda"
           autocomplete="name"
           required>
+
       </div>
 
-      <div class="field full">
-        <label for="layananPilihan">Layanan</label>
+      <div class="field">
 
-        <select id="layananPilihan" required>
+        <label>PILIH LAYANAN</label>
+
+        <select id="layanan" required>
 
           <option value="">Pilih layanan</option>
 
@@ -387,19 +622,23 @@ footer {
           <option>Smoothing — Mulai Rp400.000</option>
 
         </select>
+
       </div>
 
       <div class="field">
-        <label for="tanggal">Tanggal</label>
+
+        <label>TANGGAL BOOKING</label>
 
         <input
-          id="tanggal"
           type="date"
+          id="tanggal"
           required>
+
       </div>
 
       <div class="field">
-        <label for="jam">Jam (WIB)</label>
+
+        <label>JAM BOOKING</label>
 
         <select id="jam" required>
 
@@ -420,79 +659,133 @@ footer {
           <option>22:00</option>
 
         </select>
-      </div>
-
-      <div class="field full">
-
-        <button class="btn" type="submit">
-          BOOKING VIA WHATSAPP
-        </button>
 
       </div>
+
+      <button type="submit" class="btn">
+        BOOK VIA WHATSAPP →
+      </button>
 
     </form>
 
-    <p class="note">
-      Jam operasional setiap hari: 10.00–22.00 WIB.
-      Booking akan dikirim ke WhatsApp untuk konfirmasi.
-    </p>
+    <div class="booking-note">
+      Booking akan diteruskan ke WhatsApp untuk
+      konfirmasi. Jam operasional setiap hari
+      10.00–22.00 WIB.
+    </div>
 
   </div>
+
 </section>
 
-<section id="kontak">
+<!-- CONTACT -->
 
-  <div class="tag">VISIT & FOLLOW</div>
+<section id="contact">
 
-  <h2 class="section-title">BW THE BARBER</h2>
+  <div class="section-label">
+    CONNECT WITH US
+  </div>
 
-  <p class="sub">
-    Setiap hari · 10.00–22.00 WIB
+  <h2 class="section-title">
+    BW THE BARBER
+  </h2>
+
+  <p class="section-desc">
+    Stay connected with our latest styles and works.
   </p>
 
-  <div class="footer-links">
+  <div class="contact-card">
 
-    <a href="https://www.instagram.com/bw.hair.studio/"
-       target="_blank"
-       rel="noopener">
-      Instagram
-    </a>
+    <p>
+      Premium grooming experience.<br>
+      Open daily · 10.00–22.00 WIB.
+    </p>
 
-    <a href="https://www.tiktok.com/@barber.academy.pky/"
-       target="_blank"
-       rel="noopener">
-      TikTok
-    </a>
+    <div class="socials">
 
-    <a href="https://wa.me/6282211122979"
-       target="_blank"
-       rel="noopener">
-      WhatsApp
-    </a>
+      <a href="https://www.instagram.com/bw.hair.studio/"
+         target="_blank"
+         rel="noopener">
+        INSTAGRAM ↗
+      </a>
+
+      <a href="https://www.tiktok.com/@barber.academy.pky/"
+         target="_blank"
+         rel="noopener">
+        TIKTOK ↗
+      </a>
+
+    </div>
 
   </div>
 
 </section>
 
 <footer>
-  © <span id="year"></span> BW THE BARBER · Premium Grooming
+
+  © <span id="year"></span> BW THE BARBER
+
 </footer>
 
+<!-- FLOATING WHATSAPP -->
+
+<a class="wa-float"
+   href="https://wa.me/6282211122979"
+   target="_blank"
+   rel="noopener"
+   aria-label="WhatsApp">
+  ☎
+</a>
+
+<!-- BOTTOM NAV -->
+
+<div class="bottom-nav">
+
+  <div class="bottom-inner">
+
+    <a href="#home" class="nav-item active">
+      <span class="icon">⌂</span>
+      Home
+    </a>
+
+    <a href="#services" class="nav-item">
+      <span class="icon">✂</span>
+      Services
+    </a>
+
+    <a href="#booking" class="nav-item">
+      <span class="icon">▣</span>
+      Booking
+    </a>
+
+    <a href="#contact" class="nav-item">
+      <span class="icon">◎</span>
+      Contact
+    </a>
+
+  </div>
+
 </div>
+
+<!-- JAVASCRIPT -->
 
 <script>
 
 function bookingWhatsApp(event) {
 
-  if (event) event.preventDefault();
+  event.preventDefault();
 
-  const nama = document.getElementById("nama").value.trim();
+  const nama =
+    document.getElementById("nama").value.trim();
 
-  const layanan = document.getElementById("layananPilihan").value;
+  const layanan =
+    document.getElementById("layanan").value;
 
-  const tanggal = document.getElementById("tanggal").value;
+  const tanggal =
+    document.getElementById("tanggal").value;
 
-  const jam = document.getElementById("jam").value;
+  const jam =
+    document.getElementById("jam").value;
 
   if (!nama || !layanan || !tanggal || !jam) {
 
@@ -512,28 +805,49 @@ function bookingWhatsApp(event) {
     "Jam: " + jam + " WIB\n\n" +
     "Mohon konfirmasi booking saya.";
 
-  const link =
+  const url =
     "https://wa.me/" +
     nomor +
     "?text=" +
     encodeURIComponent(pesan);
 
-  window.location.href = link;
+  window.location.href = url;
 
 }
 
 document.getElementById("year").textContent =
   new Date().getFullYear();
 
-const tanggalInput = document.getElementById("tanggal");
+const dateInput =
+  document.getElementById("tanggal");
 
-const today = new Date();
+const now = new Date();
 
 const localDate = new Date(
-  today.getTime() - today.getTimezoneOffset() * 60000
+  now.getTime() -
+  now.getTimezoneOffset() * 60000
 ).toISOString().split("T")[0];
 
-tanggalInput.min = localDate;
+dateInput.min = localDate;
+
+/* Bottom navigation active state */
+
+const navItems =
+  document.querySelectorAll(".nav-item");
+
+navItems.forEach(function(item) {
+
+  item.addEventListener("click", function() {
+
+    navItems.forEach(function(nav) {
+      nav.classList.remove("active");
+    });
+
+    item.classList.add("active");
+
+  });
+
+});
 
 </script>
 
