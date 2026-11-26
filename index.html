@@ -181,30 +181,19 @@ Booking akan diteruskan ke WhatsApp untuk konfirmasi.
 
  
 function fillTimes() {
-    const current = partsWIB();
     const chosen = dateEl.value;
 
-    timeEl.replaceChildren();
-
-    const placeholder = document.createElement("option");
-    placeholder.value = "";
-    placeholder.textContent = "Pilih Jam";
-    timeEl.appendChild(placeholder);
+    timeEl.innerHTML = '<option value="">Pilih Jam</option>';
 
     if (!chosen) return;
 
     for (let h = 10; h <= 22; h++) {
-        if (
-            chosen === current.date &&
-            (h < current.hour ||
-            (h === current.hour && current.minute > 0))
-        ) {
-            continue;
-        }
+        const jam = String(h).padStart(2, "0") + ":00";
 
         const opt = document.createElement("option");
-        opt.value = String(h).padStart(2, "0") + ":00";
-        opt.textContent = opt.value;
+        opt.value = jam;
+        opt.textContent = jam;
+
         timeEl.appendChild(opt);
     }
 }
