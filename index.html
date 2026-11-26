@@ -179,7 +179,7 @@ Booking akan diteruskan ke WhatsApp untuk konfirmasi.
     };
   }
 
-  
+ 
 function fillTimes() {
     const current = partsWIB();
     const chosen = dateEl.value;
@@ -208,11 +208,8 @@ function fillTimes() {
         timeEl.appendChild(opt);
     }
 }
+ 
 
-  dateEl.min = partsWIB().date;
-
-  dateEl.addEventListener("input", fillTimes);
-  dateEl.addEventListener("change", fillTimes);
 
   function submitBooking() {
 
