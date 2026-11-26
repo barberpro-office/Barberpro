@@ -379,63 +379,52 @@ footer {
     <p>&copy; 2026 BW THE BARBER. All Rights Reserved.</p>
 </footer>
 
-<script>
-(function () {
-    const form = document.getElementById("bookingForm");
-    const dateInput = document.getElementById("tanggal");
+function submitBooking() {
+  const customer = nameEl.value.trim();
 
-    function getWIBDate() {
-        const parts = new Intl.DateTimeFormat("en-CA", {
-            timeZone: "Asia/Jakarta",
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit"
-        }).formatToParts(new Date());
+  const selectedOption =
+    serviceEl.options[serviceEl.selectedIndex];
 
-        const get = type => parts.find(p => p.type === type).value;
+  const service =
+    selectedOption ? selectedOption.text.trim() : "";
 
-        return get("year") + "-" + get("month") + "-" + get("day");
-    }
+  const day = dateEl.value.trim();
+  const time = timeEl.value.trim();
 
-    dateInput.min = getWIBDate();
+  if (!customer || !service || !day || !time) {
+    alert(
+      "Data belum lengkap:\n" +
+      "Nama: " + (customer || "BELUM") + "\n" +
+      "Layanan: " + (service || "BELUM") + "\n" +
+      "Tanggal: " + (day || "BELUM") + "\n" +
+      "Jam: " + (time || "BELUM")
+    );
+    return;
+  }
 
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
+  const dateText = new Date(day + "T12:00:00")
+    .toLocaleDateString("id-ID", {
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    });
 
-        const nama = document.getElementById("nama").value.trim();
-        const layanan = document.getElementById("layanan").value;
-        const tanggal = dateInput.value;
-        const jam = document.getElementById("jam").value;
+  const message =
+    "Halo BW THE BARBER, saya ingin booking:\n\n" +
+    "Nama: " + customer + "\n" +
+    "Layanan: " + service + "\n" +
+    "Tanggal: " + dateText + "\n" +
+    "Jam: " + time + " WIB\n\n" +
+    "Mohon konfirmasi booking saya. Terima kasih.";
 
-        if (!nama || !layanan || !tanggal || !jam) {
-            alert("Mohon lengkapi seluruh data booking.");
-            return;
-        }
+  const wa =
+    "https://wa.me/6282211122979?text=" +
+    encodeURIComponent(message);
 
-        const tanggalFormat = new Date(tanggal + "T12:00:00")
-            .toLocaleDateString("id-ID", {
-                day: "numeric",
-                month: "long",
-                year: "numeric"
-            });
+  window.location.href = wa;
+}
+        
 
-        const pesan =
-            "Halo BW THE BARBER, saya ingin booking:\n\n" +
-            "Nama: " + nama + "\n" +
-            "Layanan: " + layanan + "\n" +
-            "Tanggal: " + tanggalFormat + "\n" +
-            "Jam: " + jam + " WIB\n\n" +
-            "Mohon konfirmasi booking saya. Terima kasih.";
-
-        const nomor = "6282211122979";
-
-        const url =
-            "https://api.whatsapp.com/send?phone=" +
-            nomor +
-            "&text=" +
-            encodeURIComponent(pesan);
-
-        window.location.assign(url);
     });
 })();
 </script>
